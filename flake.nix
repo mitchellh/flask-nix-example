@@ -22,7 +22,9 @@
         };
 
         # The default package when a specific package name isn't specified.
-        defaultPackage = packages.app;
+        defaultPackage = pkgs.writeShellScriptBin "entrypoint" ''
+	  ${packages.app}/bin/app
+	'';
       }
     );
 }
