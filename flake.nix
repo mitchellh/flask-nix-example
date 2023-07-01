@@ -9,5 +9,11 @@
       {
         inherit nixpkgs;
         dir = ./.;
+        package-overlay = pkgs: packages:
+          packages // {
+            default = pkgs.writeShellScriptBin "entrypoint" ''
+              	    ${packages.app}/bin/app
+              	  '';
+          };
       };
 }
